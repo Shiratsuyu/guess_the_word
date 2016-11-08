@@ -9,31 +9,33 @@ table::~table(){
 	data.close();
 }
 
-void table::get_difficulty(int choose){
+void table::get_difficulty(){
 	reset();
+	extern int number;
+	do{
+		cout<<"Please choose you difficulty(press '1' is easy,'2' is normal, '3' is hard):";
+		(cin>>number).get();
+	}while(number<1||number>3);
 	wordtable = new vector<string>;
 	ostringstream os;
 	os<<data.rdbuf();
 	string content,memory(os.str());
 	size_t p;
-	switch(choose){
+	switch(number){
 		case easy:{
 			p = memory.find("[easy]");
-			cout<<p<<endl;
 			break;
 		}
 		case normal:{
 			p = memory.find("[normal]");
-			cout<<p<<endl;
 			break;
 		}
 		case hard:{
 			p = memory.find("[hard]");
-			cout<<p<<endl;
 			break;
 		}
 		default:{
-			cout<<"非法输入！"<<endl;
+			p = memory.find("[easy]");
 			break;
 		}
 	}
@@ -45,7 +47,7 @@ void table::get_difficulty(int choose){
 		// cout<<content<<endl;
 	}
 	formet();
-	cout<<(*wordtable)[5]<<endl;
+	// cout<<(*wordtable)[5]<<endl;
 }
 
 void table::reset(){
@@ -63,7 +65,6 @@ void table::formet(){
 }
 
 string table::get_a_word(){
-	int rand = get_a_random(wordtable->size());
-	cout<<endl<<(*wordtable)[rand]<<endl;
+	int rand = get_a_random(wordtable->size()-1);
 	return (*wordtable)[rand];
 }

@@ -5,7 +5,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include "random.h"
+#include "global.h"
 
 class table
 {
@@ -21,7 +21,7 @@ private:
 public:
 	table();
 	~table();
-	void get_difficulty(int choose);
+	void get_difficulty();
 	void reset();
 	void formet();
 	std::string get_a_word();
