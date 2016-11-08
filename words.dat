@@ -1,0 +1,38 @@
+[easy]
+1 = pie
+2 = apple
+3 = pen
+4 = dog
+5 = cat
+6 = car
+7 = egg
+8 = tree
+9 = tiger
+10 = air
+[end]
+
+[normal]
+1 = chicken
+2 = tomato
+3 = daikon
+4 = vegetables
+5 = cabbage
+6 = butcher
+7 = careful
+8 = healthy
+9 = teacher
+10 = valencia
+[end]
+
+[hard]
+1 = conventional
+2 = microscopically
+3 = subdiscipline
+4 = congratulation
+5 = alphanumeric
+6 = specification
+7 = transformation
+8 = developmental
+9 = verification
+10 = carboxylicacid
+[end]
