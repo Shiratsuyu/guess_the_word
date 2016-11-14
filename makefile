@@ -1,6 +1,6 @@
 install:guesstheword
 
-guesstheword:main.o table.o random.o guess.o global.o
+guesstheword:main.o table.o guess.o global.o
 	g++ main.o table.o global.o guess.o -o guesstheword
 
 main.o:main.cpp
