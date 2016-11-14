@@ -1,8 +1,8 @@
 #include "global.h"
 using namespace std;
 
-string putin;	//输入缓存
-int number;	//主函数的int的临时存储
+string putin;
+int number;
 
 void start_game(){
 	cout<<"Welcome to this game!"<<endl;
