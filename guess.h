@@ -13,10 +13,12 @@ private:
 	int chance,trying;
 	char putinchar;
 	char *check;
+	bool tips;
 public:
 	guess(std::string getting);
 	~guess();
-	void guessloop();
+	int guessloop();
+	void help();
 	int guesswork(char letter);
 };
 

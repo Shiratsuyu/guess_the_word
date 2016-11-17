@@ -3,51 +3,61 @@ using namespace std;
 
 table::table(){
 	data.open("words.dat");
+	diff = 0;
+	if (!(data.is_open())){
+		cout<<"error: not find \'words.dat\'!"<<endl;
+		exit(-1);
+	}
 }
 
 table::~table(){
+	delete wordtable;
 	data.close();
 }
 
-void table::get_difficulty(){
+void table::change_difficulty(){
 	reset();
-	extern int number;
-	do{
-		cout<<"Please choose you difficulty(press '1' is easy,'2' is normal, '3' is hard):";
-		(cin>>number).get();
-	}while(number<1||number>3);
+	string number;
+typing:
+	cout<<"Please choose you difficulty(press '1' is easy,'2' is normal, '3' is hard):";
+	getline(cin,number);
+	if (number[0]>'3'||number[0]<'1'){
+	cout<<"Just use 1/2/3 !"<<endl;
+	goto typing;
+	}
 	wordtable = new vector<string>;
-	ostringstream os;
-	os<<data.rdbuf();
-	string content,memory(os.str());
+	stringstream ss;
+	ss<<data.rdbuf();
+	string content;
 	size_t p;
-	switch(number){
-		case easy:{
-			p = memory.find("[easy]");
+	switch(number[0]){
+		case '1':
+			p = (ss.str()).find("[easy]");
+			diff = easy;
 			break;
-		}
-		case normal:{
-			p = memory.find("[normal]");
+		case '2':
+			p = (ss.str()).find("[normal]");
+			diff = normal;
 			break;
-		}
-		case hard:{
-			p = memory.find("[hard]");
+		case '3':
+			p = (ss.str()).find("[hard]");
+			diff = hard;
 			break;
-		}
-		default:{
-			p = memory.find("[easy]");
+		default:
+			p = (ss.str()).find("[easy]");
 			break;
-		}
 	}
 	data.seekg(p,ios::beg);
 	getline(data,content);
 	while(content!="[end]"){
 		wordtable->push_back(content);
 		getline(data,content);
-		// cout<<content<<endl;
 	}
 	formet();
-	// cout<<(*wordtable)[5]<<endl;
+}
+
+int table::get_difficulty(){
+	return diff;
 }
 
 void table::reset(){
